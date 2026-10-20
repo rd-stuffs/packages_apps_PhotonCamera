@@ -1,0 +1,59 @@
+//
+// Copyright (C) 2022-2026 YAAP
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app_import {
+    name: "PhotonCamera",
+    apk: "PhotonCamera.apk",
+    preprocessed: true,
+    presigned: true,
+    product_specific: true,
+    overrides: [
+        "Aperture",
+        "Camera2",
+        "DevCamera",
+        "LegacyCamera",
+        "Snap",
+    ],
+    optional_uses_libs: [
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
+    dex_preopt: {
+        enabled: false,
+    },
+    required: [
+        "default-permissions-com.particlesdevs.photoncamera",
+        "initial-package-stopped-states-com.particlesdevs.photoncamera",
+        "preinstalled-packages-com.particlesdevs.photoncamera",
+    ],
+}
+
+prebuilt_etc {
+    name: "initial-package-stopped-states-com.particlesdevs.photoncamera",
+    product_specific: true,
+    sub_dir: "sysconfig",
+    src: "initial-package-stopped-states-com.particlesdevs.photoncamera.xml",
+    filename_from_src: true,
+}
+
+prebuilt_etc {
+    name: "preinstalled-packages-com.particlesdevs.photoncamera",
+    product_specific: true,
+    sub_dir: "sysconfig",
+    src: "preinstalled-packages-com.particlesdevs.photoncamera.xml",
+    filename_from_src: true,
+}
+
+prebuilt_etc {
+    name: "default-permissions-com.particlesdevs.photoncamera",
+    product_specific: true,
+    sub_dir: "default-permissions",
+    src: "default-permissions-com.particlesdevs.photoncamera.xml",
+    filename_from_src: true,
+}
